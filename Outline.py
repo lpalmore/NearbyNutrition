@@ -43,5 +43,15 @@ I am not sure what the nutrition information looks like
 
 '''
 def GetNutrition(restaurantName):
-    return {}
+    #can you return this in this format please:
+    '''
+    [
+      ["Restaurant Name", "Calories", "Distance", "Nutrition Fact Name", "Other Nutrition Fact Name"]
+      [restaurantNameValue1, caloriesForThatRastaurant, NuttritionFact, ...]
+      [restaurantNameValue2, ...]
+    ]
+    
+    '''
+    #if not its ok, just let me know how you are planning on returning it
+    return []
     
