@@ -1,0 +1,19 @@
+<h1>Find Nutrition Near You</h1>
+{% if restaurant_list %}
+  <table id="data" cellspancing="0" cellpadding="0">
+    <thead>
+      {% for header in header_names %}
+        <th><span>{{header}}</span></th>
+      {% endfor %}
+    </thead>
+    <tbody>
+      {% for restaurant in restaurant_list %}
+        <tr>
+          {% for info in restaurant %}
+            <td>{{info}}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
