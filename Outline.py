@@ -1,28 +1,29 @@
-#run pip install googlemaps before running this
+# CX 4242 Final Project
+#
+# run pip install googlemaps before running this
+# also run pip install geopy
+
 from googlemaps import Client
+from geopy.geocoders import Nominatim
+import json
+import requests
 
-
-'''
-https://developers.google.com/maps/documentation/geolocation/intro#overview
-This function gets the latitute and logitude values
-params: none
-returns: tuple: (string, string): (latitude, logitude) of current location
-'''
+#get latitude and longitude from pinging a website
+#website uses ip address to calculate returned values
 def GetLocation():
-    #connect with google geolocation API
-    #The Google Maps Geolocation API key
-    #geo_api_key = 
-    return (0, 0)
+    url = "http://geoip.nekudo.com/api/"
+    r = requests.get(url)
+    j = json.loads(r.text)
+    lat = j['location']['latitude']
+    lon = j['location']['longitude']
+    return((lat,lon))
 
-'''
-This function gets the latitude and logitude of an address
-returns: tuple: (string, string): (latitude, logitude) of address
-'''
+#get latitude and longitude from user entered address
+#format checking?
 def GetAddressLocation(address):
-    #google geologation API
-    gmaps = Client(gmaps_api_key)
-    lat, lng = gmaps.address_to_latlng(address)
-    return (0, 0)
+    geolocator = Nominatim()
+    location = geolocator.geocode(address)
+    return((location.latitude, location.longitude))
 
 '''
 This function returns a list of nearby restaurants. Each entry in the list
